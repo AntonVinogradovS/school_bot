@@ -13,7 +13,7 @@ user_router = Router()
 
 @user_router.message(CommandStart())
 async def start_cmd(message: types.Message):
-    print(message.from_user.id)
+    #print(message.from_user.id)
     photo = FSInputFile(r'photo1.png')
     await bot.send_photo(chat_id=message.from_user.id, photo=photo, caption=mes_one, parse_mode="HTML", reply_markup=await kb_subscride())
 
@@ -25,7 +25,7 @@ async def check_sub(callback: types.CallbackQuery):
         await callback.answer(text='Чтобы продолжить получить гайд, необходимо подписаться на канал', show_alert= True)
     else:
         # вытащить ссылку из бд
-        print(callback.from_user.first_name)
+        #print(callback.from_user.first_name)
         await callback.message.answer(text=await get_gaude(callback.from_user.first_name), parse_mode="HTML", reply_markup=await kb_guide())
 
 admin_router = Router()
